@@ -97,7 +97,6 @@ textarea {
 
 .custom-card{
   box-shadow: 3px 6px 8px #888888;
-  background-image: url("img/crop.jfif");
   transition: 0.3s ease-in-out;
 }
 

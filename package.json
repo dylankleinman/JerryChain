@@ -1,10 +1,10 @@
 {
-  "name": " ",
+  "name": "jerrychain",
   "version": "0.0.1",
-  "description": "",
-  "keywords": "",
-  "license": "",
-  "author": "",
+  "description": "The blockchain of Jerry",
+  "keywords": [],
+  "license": "ISC",
+  "author": "dylan",
   "scripts": {
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",
@@ -13,5 +13,18 @@
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
-  }
+  },
+  "main": "index.html",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylankleinman/JerryChain.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dylankleinman/JerryChain/issues"
+  },
+  "homepage": "https://github.com/dylankleinman/JerryChain#readme"
 }
