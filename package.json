@@ -1,0 +1,22 @@
+{
+  "name": "jerrychain",
+  "version": "1.0.0",
+  "description": "The blockchain of Jerry",
+  "main": "index.html",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylankleinman/JerryChain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dylankleinman/JerryChain/issues"
+  },
+  "homepage": "https://github.com/dylankleinman/JerryChain#readme"
+}
