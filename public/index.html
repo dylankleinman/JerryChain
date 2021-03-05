@@ -19,8 +19,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/flapper.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <meta name="theme-color" content="#fafafa">
 </head>
 
@@ -102,21 +101,64 @@
     </div>
   </div>
 
+  <div style="text-align: center; color: white;">
+    <div style="width: 80%; height: 2px; margin: auto; background-color: white; margin-top: 25px; margin-bottom: 25px;"></div>
+    <h1 class="card-title">Jerry's Top 7 Picks Today</h1>
+  </div>
+
   <!--Suggested Crypto Cards-->
       <div class = "main" id = "cards">
       </div>
 
 
+      <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="margin:auto" id="modal-body">
+        <div class="spinner-border text-info" id="spinner" style="margin: auto; width: 5rem; height: 5rem;" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="container" style="font-size: 15px;">
+          <div class="row">
+            <div class="col-sm">
+              <div>Token ID: <span id="tkn-id"></span></div>
+              <div>Current Price: <span id="crnt-price"></span></div>
+            </div>
+            <div class="col-sm">
+              <div>Market Cap: $<span id="mkt-cap"></span></div>
+              <div>24hr Price Chg: $<span id="prc-chng"></span></div>
+            </div>
+          </div>
+        </div>
+        <div style="width: 350px; height: 10rem; margin: auto;"><canvas id="myChart"></canvas></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="close-btn btn btn-secondary" data-dismiss="modal" >Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <!--scripts-->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"></script>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"></script> -->
       <script src="js/jquery.flapper.js"></script>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
   <script src="js/metamask.js"></script>
+  <script src="js/charts.js"></script>
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;

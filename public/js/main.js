@@ -65,13 +65,41 @@ function changeFlappers(data, activeCryptos){
 
 function createCard(item){
     document.getElementById("cards").innerHTML += `
-        <div class="card custom-card" style="width: 18rem; height: 13rem; margin: 10px; padding-top: 15px;">
+        <div class="card custom-card" id= `+item.id+` style="width: 18rem; height: 13rem; margin: 10px; padding-top: 15px;">
         <img class="card-img-top" src=`+item.large+` alt="Card image cap" style="width:25%; margin:auto">
         <div class="card-body" style="margin: auto; text-align: center">
             <h3 class="card-title">`+item.name+`</h3>
             <h5 class="card-title">Market Cap Rank: `+item.market_cap_rank+`</h5>
         </div>
         </div>`
+
+        $(".custom-card").click(function(){
+            $('#exampleModalCenter').modal('toggle');
+            let itemId = $(this)[0].id
+            fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids='+itemId+'&order=market_cap_desc&per_page=100&page=1&sparkline=true')
+            .then((response) => response.json())
+            .then(data => { 
+                data=data[0];
+                $('#spinner').hide();
+                $('#modalTitle').html(data.name);
+                $('#tkn-id').html(data.id);
+                $('#crnt-price').html(data.current_price);
+                $('#mkt-cap').html(data.market_cap);
+                $('#prc-chng').html(data.price_change_24h);
+                console.log(data);
+                buildChart(data.sparkline_in_7d.price);
+            })
+            console.log(itemId);
+        });
 }
+
+$('.close-btn').click(function(){
+
+})
+
+$("#exampleModalCenter").on("hidden.bs.modal", function () {
+    console.log('remove');
+    $('.chartjs-size-monitor').remove();
+});
 
 
