@@ -7,7 +7,8 @@
     "doc": "doc"
   },
   "scripts": {
-    "test": "start"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/dylankleinman/JerryChain/issues"
   },
-  "homepage": "https://github.com/dylankleinman/JerryChain#readme"
+  "homepage": "https://github.com/dylankleinman/JerryChain#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
