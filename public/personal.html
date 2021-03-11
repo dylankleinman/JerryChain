@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/flapper.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" style="padding:0px;"><img src="img/IMG_1575.png" style="width:65px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/public">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">All Cryptos</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Cryptos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Pinned Items</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div style="height: 100%">
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="margin:auto" id="modal-body">
+                    <div class="spinner-border text-info" id="spinner" style="margin: auto; width: 5rem; height: 5rem;"
+                        role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="container data-attributes">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div>Token ID: <span id="tkn-id"></span></div>
+                                <div>Current Price: <span id="crnt-price"></span></div>
+                            </div>
+                            <div class="col-sm">
+                                <div>Market Cap: $<span id="mkt-cap"></span></div>
+                                <div>24hr Price Chg: $<span id="prc-chng"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 350px; height: 10rem; margin: auto;"><canvas id="myChart"></canvas></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-btn btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--scripts-->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"></script> -->
+    <!-- <script src="js/jquery.flapper.js"></script>
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script> -->
+    <!-- <script src="js/metamask.js"></script> -->
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <!-- <script>
+        window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async></script> -->
+
+</body>
+
+</html>

@@ -124,7 +124,48 @@ textarea {
 }
 
 body{
+  background-attachment: fixed;
   background-image: linear-gradient(#bfdafc,#cca4fd, #7F51FD) !important;
+}
+
+.autocomplete-wrapper{
+  position: relative; 
+  display: inline-block; 
+  width: 370px;
+}
+
+.autoComplete_list{
+  max-height: 500px;
+  overflow: auto;
+}
+
+.modal-title a {
+  color: black;
+}
+
+.modal-title a:hover {
+  text-decoration: none;
+}
+
+/* width */
+.autoComplete_list::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.autoComplete_list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.autoComplete_list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.autoComplete_list::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .carousel-slide{
@@ -138,8 +179,16 @@ body{
 #jerrypic {
   animation: MoveUpDown 3s ease-in-out infinite;
   position: absolute;
-  left: 250px;
-  top: 45px;
+  /* left: 250px;
+  top: 45px; */
+}
+
+.data-attributes{
+  font-size: 15px;
+}
+
+.data-attributes > .row > .col-sm > div{
+  white-space: nowrap;
 }
 
 @keyframes MoveUpDown {

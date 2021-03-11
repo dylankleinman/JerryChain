@@ -1,7 +1,7 @@
 fetchURLs();
 
 let Flapdata;
-
+let chartRendered = false;
 async function fetchURLs() {
     try {
       // Promise.all() lets us coalesce multiple promises into a single super-promise
@@ -10,6 +10,7 @@ async function fetchURLs() {
         fetch('https://api.coingecko.com/api/v3/global')
             .then((response) => response.json())
             .then(data => { 
+                console.log(data);
                 //console.log (data);
                 Flapdata = data.data;
                 fillCarousel(data.data);
@@ -74,32 +75,54 @@ function createCard(item){
         </div>`
 
         $(".custom-card").click(function(){
-            $('#exampleModalCenter').modal('toggle');
             let itemId = $(this)[0].id
-            fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids='+itemId+'&order=market_cap_desc&per_page=100&page=1&sparkline=true')
-            .then((response) => response.json())
-            .then(data => { 
-                data=data[0];
-                $('#spinner').hide();
-                $('#modalTitle').html(data.name);
-                $('#tkn-id').html(data.id);
-                $('#crnt-price').html(data.current_price);
-                $('#mkt-cap').html(data.market_cap);
-                $('#prc-chng').html(data.price_change_24h);
-                console.log(data);
-                buildChart(data.sparkline_in_7d.price);
-            })
-            console.log(itemId);
+            addData(itemId)
         });
 }
 
-$('.close-btn').click(function(){
+async function addData(itemId){
+    let priceArray = [];
+    try {
+        var Modaldata = await Promise.all([
+            fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=' + itemId + '&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+                .then((response) => response.json())
+                .then(data => {
+                    data = data[0];
+                    $('#spinner').hide();
+                    $('#modalTitle').html('<a href=https://www.coingecko.com/en/coins/'+data.id+'>'+data.name+'</a>');
+                    $('#tkn-id').html('Token ID: ' + data.id);
+                    $('#crnt-price').html('Current Price: $' + Math.round((data.current_price + Number.EPSILON) * 100) / 100);
+                    $('#mkt-cap').html('Market Cap: $' + data.market_cap);
+                    $('#prc-chng').html('24hr Price Chg: $' + Math.round((data.price_change_24h + Number.EPSILON) * 100) / 100);
+                }),
+            fetch('https://api.coingecko.com/api/v3/coins/'+ itemId +'/market_chart?vs_currency=usd&days=7&interval=daily')
+                .then(response => response.json())
+                .then(
+                    
+                    data => {
+                        data.prices.forEach(element => {
+                            priceArray.push(element[1]);
+                        });
+                        if (!chartRendered) {
+                            buildChart(arrayLengthCheck(priceArray));
+                            chartRendered = true;
+                        } else {
+                            updateChart(arrayLengthCheck(priceArray));
+                        }
+                    })
+        ]);
+    } catch (error) {
+        console.log(error);
+    }
+    $('#exampleModalCenter').modal('toggle');
+}
 
-})
-
-$("#exampleModalCenter").on("hidden.bs.modal", function () {
-    console.log('remove');
-    $('.chartjs-size-monitor').remove();
-});
-
+function arrayLengthCheck(array){
+    if(array.length < 7){
+        array.unshift(0);
+        return (arrayLengthCheck(array));
+    }else{
+        return array;
+    }
+}
 

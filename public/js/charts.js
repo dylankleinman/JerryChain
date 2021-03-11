@@ -1,6 +1,8 @@
 var ctx = document.getElementById('myChart').getContext('2d');
+let chart;
 function buildChart(chartData){
-    var chart = new Chart(ctx, {
+    console.log(chartData);
+    chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'line',
         
@@ -28,8 +30,24 @@ function buildChart(chartData){
                     }
                 }]
             },
+            tooltips: {
+                enabled: true,
+                mode: 'single',
+                callbacks: {
+                    label: function (tooltipItems, data) {
+                        return (Math.round((tooltipItems.yLabel + Number.EPSILON) * 100) / 100);
+                    }
+                }
+            },
         }
     });    
+}
+
+function updateChart(newChartData) {
+    // chart.data.labels.pop();
+    chart.data.datasets[0].data = newChartData;
+    // chart.update();
+    chart.update();
 }
 
 function Last7Days () {
@@ -37,7 +55,7 @@ function Last7Days () {
     for (var i=0; i<7; i++) {
         var d = new Date();
         d.setDate(d.getDate() - i);
-        result.push( formatDate(d) )
+        result.unshift( formatDate(d) )
     }
     return(result);
 }
@@ -51,3 +69,4 @@ function formatDate(date){
     date = mm+'/'+dd;
     return date
  }
+

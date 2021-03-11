@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dylankleinman/JerryChain#readme",
   "dependencies": {
+    "autocompleter": "^6.1.0",
     "express": "^4.17.1"
   }
 }
